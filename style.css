@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+    /* Pastel Palette */
+    --color-primary-blue: #BDD4FC;
+    --color-primary-amber: #FF9839;
+    --color-secondary-pink: #FFC9D1;
+    --color-accent-mint: #AEE2D9;
+
+    --color-purple-pastel: #DED5F1;
+    --color-green-pastel: #C6F5D3;
+    --color-blue-pastel: #CDE1FF;
+
+    /* Utility */
+    --color-text-dark: #333333;
+    --color-surface-white: #FFFFFF;
+
+    /* Gradient Stops (for easy utility class creation) */
+    --color-gradient-start: #B7E4F2;
+    /* Primary Blue */
+    --color-gradient-end: #AEE2D9;
+    /* Accent Mint */
+
+    --color-secondary-text: #575973
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
