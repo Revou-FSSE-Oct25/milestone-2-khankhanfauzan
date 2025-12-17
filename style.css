@@ -2,28 +2,31 @@
 
 :root {
     /* Pastel Palette */
-    --color-primary-blue: #BDD4FC;
-    --color-primary-amber: #FF9839;
-    --color-secondary-pink: #FFC9D1;
-    --color-accent-mint: #AEE2D9;
+    --color-primary-blue: #bdd4fc;
+    --color-primary-amber: #ff9839;
+    --color-secondary-pink: #ffc9d1;
+    --color-accent-mint: #aee2d9;
 
-    --color-purple-pastel: #DED5F1;
-    --color-green-pastel: #C6F5D3;
-    --color-blue-pastel: #CDE1FF;
+    --color-purple-pastel: #ded5f1;
+    --color-green-pastel: #c6f5d3;
+    --color-blue-pastel: #cde1ff;
 
     /* Utility */
     --color-text-dark: #333333;
-    --color-surface-white: #FFFFFF;
+    --color-surface-white: #ffffff;
 
     /* Gradient Stops (for easy utility class creation) */
-    --color-gradient-start: #B7E4F2;
+    --color-gradient-start: #b7e4f2;
     /* Primary Blue */
-    --color-gradient-end: #AEE2D9;
+    --color-gradient-end: #aee2d9;
     /* Accent Mint */
 
-    --color-secondary-text: #575973
+    --color-secondary-text: #575973;
+}
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Quicksand", sans-serif;
 }
