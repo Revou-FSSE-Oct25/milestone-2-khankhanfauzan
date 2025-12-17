@@ -23,28 +23,49 @@
                         <a href="#" class="text-white font-bold text-3xl">Revo<span
                                 class="text-(--color-primary-amber)">Fun</span></a>
                     </div>
-                    <div class="rounded-full height-8 flex items-center m-auto ">
+                    <div class="rounded-full height-8 items-center m-auto hidden md:flex">
                         <div class="flex items-baseline space-x-4">
                             <a href="#welcome"
                                 class="text-white px-4 py-2 rounded-full text-xl font-medium hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Home</a>
                             <a href="#games"
                                 class="text-white px-4 py-2 rounded-full text-xl font-medium hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Games</a>
-                            <a href="#"
+                            <a href="#scoreboard"
                                 class="text-white px-4 py-2 rounded-full text-xl font-medium hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Scoreboard</a>
-                            <!-- <a href="#"
-                                class="text-white px-3 py-2 rounded-full text-sm font-medium hover:bg-white hover:text-(--color-secondary-text)">Contact</a> -->
                         </div>
 
                     </div>
-                    <div>
-                        <a href="#games"
-                            class="bg-(--color-primary-amber) text-white px-4 py-2 rounded-full text-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Lets
+                    <div class="flex items-center">
+                        <a id="navUserButton" href="#games"
+                            class="hidden md:inline-flex bg-(--color-primary-amber) text-white px-4 py-2 rounded-full text-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) transition duration-300"
+                            onclick="checkCurrentUser(event)">Lets
                             Play!
                             <i class="ri-arrow-right-s-line"></i></a>
+
+                        <button id="mobileNavToggle"
+                            class="md:hidden ml-3 text-white text-3xl p-2 rounded-lg hover:bg-white hover:text-(--color-secondary-text) transition">
+                            <i id="mobileNavIcon" class="ri-menu-3-line"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </nav>
+        <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/40 hidden z-20">
+            <div id="mobileMenuPanel" class="bg-white rounded-2xl shadow-2xl mx-4 mt-20 p-4">
+                <div id="mobileWelcomeMessage" class="hidden px-4 py-3 text-(--color-secondary-text) font-semibold">
+                    Hello, <span id="mobileWelcomeName"></span></div>
+                <a href="#welcome"
+                    class="mobile-nav-link block px-4 py-3 text-(--color-secondary-text) rounded-lg hover:bg-neutral-50">Home</a>
+                <a href="#games"
+                    class="mobile-nav-link block px-4 py-3 text-(--color-secondary-text) rounded-lg hover:bg-neutral-50">Games</a>
+                <a href="#scoreboard"
+                    class="mobile-nav-link block px-4 py-3 text-(--color-secondary-text) rounded-lg hover:bg-neutral-50">Scoreboard</a>
+                <button id="mobilePlayBtn"
+                    class="w-full mt-3 px-4 py-2 bg-(--color-primary-amber) text-white rounded-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) border-2 transition">Lets
+                    Play! <i class="ri-arrow-right-s-line"></i></button>
+                <button id="mobileLogoutBtn"
+                    class="hidden w-full mt-3 px-4 py-2 bg-(--color-primary-amber) text-white rounded-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) border-2 transition">Logout</button>
+            </div>
+        </div>
 
 
         <!-- Welcome -->
@@ -53,41 +74,48 @@
                 <div class="mr-auto place-self-center lg:col-span-7">
                     <h1
                         class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-                        AMAZINGLY SIMPLE</h1>
-                    <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eaque, tempora iusto quis quisquam
-                        eos.</p>
+                        Amazingly Simple & Maximum Fun</h1>
+                    <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-white">
+                        Fun to play simple mini games.
+                        Play easily online directly on this website. Collect scores and climb the leaderboard with
+                        cheerful pastel vibes!
+                    </p>
                     <div
                         class="border-3 border-white w-fit rounded-lg hover:bg-(--color-primary-amber) transition duration-300 ">
-                        <a href="#"
+                        <a href="#games"
                             class="inline-flex items-center justify-center px-4 py-2  text-base font-semibold text-center text-white rounded-lg">
                             Get started
                             <i class="ml-2 ri-arrow-right-s-line"></i>
                         </a>
                     </div>
                 </div>
-                <div class=" lg:mt-0 lg:col-span-5 lg:flex">
-                    <img src="images/hero-image.png" class="object-cover" alt="mockup">
+                <div
+                    class="lg:mt-0 lg:col-span-5 flex flex-col items-center gap-3 lg:flex-row lg:items-center lg:gap-4">
+                    <img src="assets/images/hero-image.png" class="object-cover" alt="mockup">
+                    <h2 id="welcomeMessage" class="hidden text-2xl font-bold text-white text-center lg:text-left">
+                    </h2>
                 </div>
+
             </div>
         </section>
 
         <!-- Games -->
         <section id="games" class="min-h-full py-20">
+            <h2 class="text-3xl font-bold text-white text-center mb-8">Games</h2>
 
 
-            <div class="grid grid-cols-3 max-w-4xl mx-auto gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto gap-4 px-4">
                 <!-- Number Guessing Game -->
                 <div
                     class=" bg-(--color-purple-pastel) p-4 text-white text-start justify-center border-8 rounded-2xl shadow-lg transition duration-300 hover:scale-105 ">
                     <div
                         class="border-4 border-white bg-(--color-secondary-pink) rounded-full w-20 h-20 mb-4 overflow-hidden flex items-center justify-center ">
-                        <img src="images/numbers.png" alt="numbers" class="w-16 h-16 ">
+                        <img src="assets/images/numbers.png" alt="numbers" class="w-16 h-16 ">
                     </div>
                     <h3 class="text-2xl font-semibold my-4">Number Guessing</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At magnam atque alias ipsam aut maiores
                         minus cupiditate vero mollitia nobis!</p>
-                    <button onclick="document.location.href = '/number_guessing_game/index.html'"
+                    <button onclick="startGame('/games/number_guessing.html')"
                         class="mt-4 bg-white text-(--color-purple-pastel) font-semibold px-4 py-2 rounded-full hover:bg-(--color-secondary-pink) hover:text-white transition duration-300 ">Play
                         Now</button>
                 </div>
@@ -96,12 +124,12 @@
                     class=" bg-(--color-green-pastel) p-4 text-white text-start justify-center border-8 rounded-2xl shadow-lg transition duration-300 hover:scale-105">
                     <div
                         class="border-4 border-white bg-(--color-accent-mint) rounded-full w-20 h-20 mb-4 overflow-hidden flex items-center justify-center ">
-                        <img src="images/clicker.png" alt="numbers" class="w-16 h-16 ">
+                        <img src="assets/images/clicker.png" alt="numbers" class="w-16 h-16 ">
                     </div>
                     <h3 class="text-2xl font-semibold my-4">Clicker Game</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At magnam atque alias ipsam aut maiores
                         minus cupiditate vero mollitia nobis!</p>
-                    <button onclick="document.location.href = '/clicker_game/index.html'"
+                    <button onclick="startGame('/games/clicker.html')"
                         class="mt-4 bg-white text-(--color-accent-mint) font-semibold px-4 py-2 rounded-full hover:bg-(--color-accent-mint) hover:text-white transition duration-300 ">Play
                         Now</button>
                 </div>
@@ -110,12 +138,12 @@
                     class=" bg-(--color-blue-pastel) p-4 text-white text-start justify-center border-8 rounded-2xl shadow-lg transition duration-300 hover:scale-105">
                     <div
                         class="border-4 border-white bg-(--color-primary-blue) rounded-full w-20 h-20 mb-4 overflow-hidden flex items-center justify-center ">
-                        <img src="images/rock-paper-scissors.png" alt="numbers" class="w-16 h-16 ">
+                        <img src="assets/images/rock-paper-scissors.png" alt="numbers" class="w-16 h-16 ">
                     </div>
                     <h3 class="text-2xl font-semibold my-4">Rock, Paper, Scissors</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At magnam atque alias ipsam aut maiores
                         minus cupiditate vero mollitia nobis!</p>
-                    <button onclick="document.location.href = '/rock_paper_scissors_game/index.html'"
+                    <button onclick="startGame('/games/rock_paper_scissors.html')"
                         class="mt-4 bg-white text-(--color-primary-blue) font-semibold px-4 py-2 rounded-full hover:bg-(--color-primary-blue) hover:text-white transition duration-300 ">Play
                         Now</button>
                 </div>
@@ -127,47 +155,18 @@
         </section>
 
         <!-- Scoreboard -->
-
         <section id="scoreboard">
 
 
             <div class="max-w-4xl items-center justify-center mx-auto py-20 h-full">
 
+                <h2 class="text-3xl font-bold text-white text-center mb-8">Scoreboard</h2>
 
 
-                <div class="sm:hidden my-8">
-                    <label for="tabs" class="sr-only">Select your country</label>
-                    <select id="tabs"
-                        class="block w-full bg-neutral-secondary-medium border  text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:">
-                        <option>Profile</option>
-                        <option>Dashboard</option>
-                        <option>setting</option>
-                        <option>Invoice</option>
-                    </select>
-                </div>
-                <ul class="hidden text-sm font-medium text-center  sm:flex -space-x-px my-8">
-                    <li class="w-full focus-within:z-10">
-                        <a href="#"
-                            class="inline-block w-full  bg-neutral-primary-soft border rounded-s-xl hover:bg-neutral-50 hover:text-heading focus:bg-white focus:ring-4 focus:ring-(--color-primary-amber) font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none"
-                            aria-current="page">All</a>
-                    </li>
-                    <li class="w-full focus-within:z-10">
-                        <a href="#"
-                            class="inline-block w-full  bg-neutral-primary-soft border hover:bg-neutral-50 hover:text-heading focus:ring-4 focus:bg-white focus:ring-(--color-primary-amber) font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none">Number
-                            Guessing</a>
-                    </li>
-                    <li class="w-full focus-within:z-10">
-                        <a href="#"
-                            class="inline-block w-full  bg-neutral-primary-soft border hover:bg-neutral-50 hover:text-heading focus:ring-4 focus:bg-white focus:ring-(--color-primary-amber) font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none">Settings</a>
-                    </li>
-                    <li class="w-full focus-within:z-10">
-                        <a href="#"
-                            class="inline-block w-full  bg-neutral-primary-soft border rounded-e-xl hover:bg-neutral-50 hover:text-heading focus:bg-white focus:ring-4 focus:ring-(--color-primary-amber) font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none">Invoice</a>
-                    </li>
-                </ul>
+                <!-- Tabs filter removed: scoreboard shows accumulated scores -->
 
                 <div
-                    class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-xl border-3 border-(--color-secondary-text)">
+                    class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-xl border-3 border-(--color-secondary-text) mx-4 md:mx-8">
                     <table class="w-full bg-white text-sm text-left">
                         <thead class="text-xl   bg-(--color-green-pastel) border-b rounded-lg ">
                             <tr>
@@ -177,69 +176,9 @@
                                 <th scope="col" class="px-6 py-3 font-bold text-white">
                                     Score
                                 </th>
-                                <th scope="col" class="px-6 py-3 font-bold text-white">
-                                    Type
-                                </th>
-                                <th scope="col" class="px-6 py-3 font-bold text-white">
-                                    Category
-                                </th>
-                                <th scope="col" class="px-6 py-3 font-bold text-white">
-                                    Change
-                                </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="bg-neutral-primary border-b border-default">
-                                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                                    John Doe <i class="ri-vip-crown-fill text-yellow-500 ml-2"></i>
-                                </th>
-                                <td class="px-6 py-4">
-                                    129 <i class="ri-meteor-fill text-amber-500"></i>
-                                </td>
-                                <td class="px-6 py-4">
-                                    Player
-                                </td>
-                                <td class="px-6 py-4">
-                                    Number Guessing
-                                </td>
-                                <td class="px-6 py-4 text-green-500">
-                                    <i class="ri-arrow-up-long-line"></i>
-                                </td>
-                            </tr>
-                            <tr class="bg-neutral-primary border-b border-default">
-                                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                                    Betty Smith
-                                </th>
-                                <td class="px-6 py-4">
-                                    90 <i class="ri-meteor-fill text-amber-500"></i>
-                                </td>
-                                <td class="px-6 py-4">
-                                    Player
-                                </td>
-                                <td class="px-6 py-4">
-                                    Clicker
-                                </td>
-                                <td class="px-6 py-4">
-                                    <i class="ri-subtract-line text-neutral-500"></i>
-                                </td>
-                            </tr>
-                            <tr class="bg-neutral-primary">
-                                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                                    Maxwell Carter
-                                </th>
-                                <td class="px-6 py-4">
-                                    57 <i class="ri-meteor-fill text-amber-500"></i>
-                                </td>
-                                <td class="px-6 py-4">
-                                    Player
-                                </td>
-                                <td class="px-6 py-4">
-                                    Rock Paper Scissors
-                                </td>
-                                <td class="px-6 py-4">
-                                    <i class="ri-arrow-down-long-line text-red-500"></i>
-                                </td>
-                            </tr>
+                        <tbody id="scoreboardBody">
                         </tbody>
                     </table>
                 </div>
@@ -248,8 +187,50 @@
         </section>
 
         <!-- Footer -->
+        <footer class="py-10">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="bg-white/10 backdrop-blur rounded-2xl border-2 border-white/30 p-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div class="text-white font-bold text-2xl">Revo<span
+                                class="text-(--color-primary-amber)">Fun</span></div>
+                        <div class="text-white text-sm">
+                            © <span id="year"></span> RevoFun. Built with pastel vibes.
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#welcome"
+                                class="text-white px-3 py-2 rounded-full hover:bg-white hover:text-(--color-secondary-text) transition">Home</a>
+                            <a href="#games"
+                                class="text-white px-3 py-2 rounded-full hover:bg-white hover:text-(--color-secondary-text) transition">Games</a>
+                            <a href="#scoreboard"
+                                class="text-white px-3 py-2 rounded-full hover:bg-white hover:text-(--color-secondary-text) transition">Scoreboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                (function () { var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear(); })();
+            </script>
+        </footer>
     </div>
 
+    <div id="usernameModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6">
+            <h3 class="text-2xl font-bold text-(--color-secondary-text) mb-4">Enter Username</h3>
+            <p class="text-gray-600 mb-4">Username is used to save scores to Scoreboard.</p>
+            <input id="usernameInput" type="text" placeholder="contoh: John Doe"
+                class="w-full border-2 rounded-xl px-4 py-2 focus:ring-(--color-primary-amber) focus:border-(--color-primary-amber)" />
+            <div class="mt-6 flex gap-3">
+                <button id="usernameSubmit"
+                    class="flex-1 bg-(--color-primary-amber) text-white px-4 py-2 rounded-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) border-2 transition">Play</button>
+                <button id="usernameCancel"
+                    class="flex-1 bg-white text-(--color-secondary-text) px-4 py-2 rounded-xl border-2 hover:bg-neutral-50 transition">Cancel</button>
+            </div>
+            <p id="usernameError" class="text-red-600 mt-2 hidden">Username cannot be empty.</p>
+        </div>
+    </div>
+
+    <script src="src/storage.js"></script>
+    <script src="src/main.js"></script>
 </body>
 
 </html>

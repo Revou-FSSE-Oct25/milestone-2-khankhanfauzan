@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body
+    class="bg-linear-to-br from-(--color-gradient-start) to-(--color-gradient-end) min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">⚡ Clicker Game</h1>
+
+        <div class="text-center mb-6">
+            <p class="text-gray-700">Time Left: <span id="timerDisplay"
+                    class="font-semibold text-(--color-secondary-text)">5s</span></p>
+        </div>
+
+        <div class="flex flex-col items-center gap-4">
+            <span class="text-(--color-secondary-text) font-semibold select-none">Click Me!</span>
+            <img id="clickButton" src="../assets/images/cat.png" alt="cat image"
+                class="w-30 h-30 cursor-pointer select-none" draggable="false">
+            <p id="scoreDisplay" class="text-3xl font-bold text-gray-800 p-4 transition-all duration-150 ease-out 
+            transform select-none cursor-pointer"></p>
+        </div>
+
+        <div class="mt-6 text-center">
+            <div class="flex gap-3 justify-center">
+                <button id="playAgainBtn" type="button"
+                    class="hidden px-4 py-2 bg-(--color-accent-mint) text-white rounded-xl hover:bg-white hover:text-(--color-secondary-text) border-2 transition">Play
+                    Again</button>
+                <a href="../../index.html#games"
+                    class="text-(--color-primary-amber) font-semibold px-4 py-2 rounded-xl border-2 hover:bg-neutral-50">Back
+                    to Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="mt-8 max-w-md w-full">
+        <div
+            class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-xl border-3 border-(--color-secondary-text)">
+            <table class="w-full bg-white text-sm text-left">
+                <thead class="text-xl bg-(--color-accent-mint) border-b rounded-lg">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 font-bold text-white">User Name</th>
+                        <th scope="col" class="px-6 py-3 font-bold text-white">Score</th>
+                    </tr>
+                </thead>
+                <tbody id="gameScoreboardBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="../src/storage.js"></script>
+    <script src="../src/games/clicker.js"></script>
+
+</body>
+
+</html>
