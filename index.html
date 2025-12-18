@@ -15,61 +15,65 @@
 
 <body>
     <div class="min-h-screen w-full bg-linear-to-br from-(--color-gradient-start) to-(--color-gradient-end)">
+        <div class="py-4">
+            <div class="bg-white/10 backdrop-blur rounded-2xl border-2 border-white/30 p-8 mx-4 mb-8">
+                <nav class="bg-transparent absolute top-0 left-0 w-full z-10 ">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex items-center justify-between h-16">
+                            <div class="shrink-0">
+                                <a href="#" class="text-white font-bold text-3xl">Revo<span
+                                        class="text-(--color-primary-amber)">Fun</span></a>
+                            </div>
+                            <div class="rounded-full height-8 items-center m-auto hidden md:flex">
+                                <div class="flex items-baseline space-x-4">
+                                    <a href="#welcome"
+                                        class="text-white px-4 py-2 rounded-full text-xl font-medium hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Home</a>
+                                    <a href="#games"
+                                        class="text-white px-4 py-2 rounded-full text-xl font-medium hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Games</a>
+                                    <a href="#scoreboard"
+                                        class="text-white px-4 py-2 rounded-full text-xl font-medium hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Scoreboard</a>
+                                </div>
 
-        <nav class="bg-transparent absolute top-0 left-0 w-full z-10 ">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="shrink-0">
-                        <a href="#" class="text-white font-bold text-3xl">Revo<span
-                                class="text-(--color-primary-amber)">Fun</span></a>
-                    </div>
-                    <div class="rounded-full height-8 items-center m-auto hidden md:flex">
-                        <div class="flex items-baseline space-x-4">
-                            <a href="#welcome"
-                                class="text-white px-4 py-2 rounded-full text-xl font-medium hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Home</a>
-                            <a href="#games"
-                                class="text-white px-4 py-2 rounded-full text-xl font-medium hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Games</a>
-                            <a href="#scoreboard"
-                                class="text-white px-4 py-2 rounded-full text-xl font-medium hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Scoreboard</a>
+                            </div>
+                            <div class="flex items-center">
+                                <a id="navUserButton" href="#games"
+                                    class="hidden md:inline-flex bg-(--color-primary-amber) text-white px-4 py-2 rounded-full text-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) transition duration-300"
+                                    onclick="checkCurrentUser(event)">Lets
+                                    Play!
+                                    <i class="ri-arrow-right-s-line"></i></a>
+
+                                <button id="mobileNavToggle"
+                                    class="md:hidden ml-3 text-white text-3xl p-2 rounded-lg hover:bg-white hover:text-(--color-secondary-text) transition">
+                                    <i id="mobileNavIcon" class="ri-menu-3-line"></i>
+                                </button>
+                            </div>
                         </div>
-
                     </div>
-                    <div class="flex items-center">
-                        <a id="navUserButton" href="#games"
-                            class="hidden md:inline-flex bg-(--color-primary-amber) text-white px-4 py-2 rounded-full text-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) transition duration-300"
-                            onclick="checkCurrentUser(event)">Lets
-                            Play!
-                            <i class="ri-arrow-right-s-line"></i></a>
-
-                        <button id="mobileNavToggle"
-                            class="md:hidden ml-3 text-white text-3xl p-2 rounded-lg hover:bg-white hover:text-(--color-secondary-text) transition">
-                            <i id="mobileNavIcon" class="ri-menu-3-line"></i>
-                        </button>
+                </nav>
+                <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/40 hidden z-20">
+                    <div id="mobileMenuPanel" class="bg-white rounded-2xl shadow-2xl mx-4 mt-20 p-4">
+                        <div id="mobileWelcomeMessage"
+                            class="hidden px-4 py-3 text-(--color-secondary-text) font-semibold">
+                            Hello, <span id="mobileWelcomeName"></span></div>
+                        <a href="#welcome"
+                            class="mobile-nav-link block px-4 py-3 text-(--color-secondary-text) rounded-lg hover:bg-neutral-50">Home</a>
+                        <a href="#games"
+                            class="mobile-nav-link block px-4 py-3 text-(--color-secondary-text) rounded-lg hover:bg-neutral-50">Games</a>
+                        <a href="#scoreboard"
+                            class="mobile-nav-link block px-4 py-3 text-(--color-secondary-text) rounded-lg hover:bg-neutral-50">Scoreboard</a>
+                        <button id="mobilePlayBtn"
+                            class="w-full mt-3 px-4 py-2 bg-(--color-primary-amber) text-white rounded-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) border-2 transition">Lets
+                            Play! <i class="ri-arrow-right-s-line"></i></button>
+                        <button id="mobileLogoutBtn"
+                            class="hidden w-full mt-3 px-4 py-2 bg-(--color-primary-amber) text-white rounded-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) border-2 transition">Logout</button>
                     </div>
                 </div>
-            </div>
-        </nav>
-        <div id="mobileMenuOverlay" class="fixed inset-0 bg-black/40 hidden z-20">
-            <div id="mobileMenuPanel" class="bg-white rounded-2xl shadow-2xl mx-4 mt-20 p-4">
-                <div id="mobileWelcomeMessage" class="hidden px-4 py-3 text-(--color-secondary-text) font-semibold">
-                    Hello, <span id="mobileWelcomeName"></span></div>
-                <a href="#welcome"
-                    class="mobile-nav-link block px-4 py-3 text-(--color-secondary-text) rounded-lg hover:bg-neutral-50">Home</a>
-                <a href="#games"
-                    class="mobile-nav-link block px-4 py-3 text-(--color-secondary-text) rounded-lg hover:bg-neutral-50">Games</a>
-                <a href="#scoreboard"
-                    class="mobile-nav-link block px-4 py-3 text-(--color-secondary-text) rounded-lg hover:bg-neutral-50">Scoreboard</a>
-                <button id="mobilePlayBtn"
-                    class="w-full mt-3 px-4 py-2 bg-(--color-primary-amber) text-white rounded-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) border-2 transition">Lets
-                    Play! <i class="ri-arrow-right-s-line"></i></button>
-                <button id="mobileLogoutBtn"
-                    class="hidden w-full mt-3 px-4 py-2 bg-(--color-primary-amber) text-white rounded-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) border-2 transition">Logout</button>
             </div>
         </div>
 
 
         <!-- Welcome -->
-        <section id="welcome" class="pt-20 min-h-full">
+        <section id="welcome" class="py-20 min-h-full">
             <div class="grid max-w-4xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                 <div class="mr-auto place-self-center lg:col-span-7">
                     <h1
@@ -99,9 +103,99 @@
             </div>
         </section>
 
+
+        <!-- Values and Vision -->
+        <section class="py-20 min-h-full">
+            <div class="max-w-4xl mx-auto px-4 text-center text-white space-y-8 ">
+                <div>
+                    <h2 class="text-4xl font-semibold">We believe strong company come from strong value and visions</h2>
+                    <p class="text-lg mt-4">Building a fondation for success - the power of shared<br>values and visions
+                        in creating a strong company.</p>
+                </div>
+                <div class="mt-4 flex gap-8 justify-center flex-col md:flex-row text-black">
+                    <div class="rounded-xl bg-white shadow-lg p-4 flex-col items-center justify-center text-start">
+                        <div
+                            class="rounded-xl bg-(--color-secondary-pink) p-2 mb-2 w-12 h-12 flex items-center justify-center text-white">
+                            <i class="ri-shake-hands-line text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Colaboration #1</h3>
+                        <p class="text-gray-400">Fostering innovation and unlocking new possibilities
+                            through partnerships - the story of
+                            Collaborations #1.</p>
+                    </div>
+                    <div class="rounded-xl bg-white shadow-lg p-4 flex-col items-center justify-center text-start">
+                        <div
+                            class="rounded-xl bg-(--color-accent-mint) p-2 mb-2 w-12 h-12 flex items-center justify-center text-white">
+                            <i class="ri-tree-line text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Keep growing</h3>
+                        <p class="text-gray-400">Embracing change, cultivating resilience, and striving for excellence -
+                            the journey of those who Keep Growing.</p>
+                    </div>
+                    <div class="rounded-xl bg-white shadow-lg p-4 flex-col items-center justify-center text-start">
+                        <div
+                            class="rounded-xl bg-(--color-primary-blue) p-2 mb-2 w-12 h-12 flex items-center justify-center text-white">
+                            <i class="ri-puzzle-2-line text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Team Chemistry</h3>
+                        <p class="text-gray-400">A cohesive team is greater than the sum of its parts, and the secret to
+                            our success lies in the unique contributions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Members -->
+        <section class="py-20 min-h-full">
+            <div class="max-w-4xl mx-auto px-4 text-center text-white space-y-8">
+                <div>
+                    <h2 class="text-4xl font-semibold">Get to know the exceptional professionals <br>who make our team
+                        shine</h2>
+                    <p class="text-lg mt-4">Discover the exceptional talent driving our team's <br>success - our
+                        brilliant
+                        game developers.</p>
+                </div>
+                <div class="mt-4 flex gap-8 justify-center flex-col md:flex-row">
+                    <div class="rounded-xl bg-white shadow-lg p-2 relative group">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
+                            alt="person 1" class="rounded-lg transition grayscale duration-300 hover:grayscale-0">
+                        <div
+                            class="absolute z-10 bg-white/70 backdrop-blur rounded-md bottom-0 left-0 right-0 p-2 text-center m-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <h3 class="text-xl font-semibold">John Doe</h3>
+                        </div>
+                    </div>
+                    <div class="rounded-xl bg-white shadow-lg p-2 relative group">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
+                            alt="person 2" class="rounded-lg transition grayscale duration-300 hover:grayscale-0">
+                        <div class="absolute z-10 bg-white/70 backdrop-blur rounded-md bottom-0 left-0 right-0 p-2
+                            text-center m-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <h3 class="text-xl font-semibold">Claudette Vincente</h3>
+                        </div>
+                    </div>
+                    <div class="rounded-xl bg-white shadow-lg p-2 relative group">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cG9ydHJhaXR8ZW58MHx8MHx8fDA%3D"
+                            alt="person 3" class="rounded-lg transition grayscale duration-300 hover:grayscale-0">
+                        <div class="absolute z-10 bg-white/70 backdrop-blur rounded-md bottom-0 left-0 right-0 p-2
+                            text-center m-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <h3 class="text-xl font-semibold">Matteus Sjurd</h3>
+                        </div>
+                    </div>
+                    <div class="rounded-xl bg-white shadow-lg p-2 relative group">
+                        <img src="https://images.unsplash.com/photo-1614204424926-196a80bf0be8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBvcnRyYWl0fGVufDB8fDB8fHww"
+                            alt="person 4" class="rounded-lg transition grayscale duration-300 hover:grayscale-0">
+                        <div class="absolute z-10 bg-white/70 backdrop-blur rounded-md bottom-0 left-0 right-0 p-2
+                            text-center m-3 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <h3 class="text-xl font-semibold">Bianka Magdalena</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Games -->
         <section id="games" class="min-h-full py-20">
-            <h2 class="text-3xl font-bold text-white text-center mb-8">Games</h2>
+            <h2 class="text-3xl font-bold text-white text-center mb-8 ">Our Games</h2>
 
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto gap-4 px-4">
@@ -154,17 +248,14 @@
 
         </section>
 
+
+
+
         <!-- Scoreboard -->
-        <section id="scoreboard">
-
-
-            <div class="max-w-4xl items-center justify-center mx-auto py-20 h-full">
-
-                <h2 class="text-3xl font-bold text-white text-center mb-8">Scoreboard</h2>
-
-
+        <section id="scoreboard" class="py-20 min-h-full">
+            <div class="max-w-4xl items-center justify-center mx-auto">
+                <h2 class="text-3xl font-bold text-white text-center mb-8">Best Players</h2>
                 <!-- Tabs filter removed: scoreboard shows accumulated scores -->
-
                 <div
                     class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-xl border-3 border-(--color-secondary-text) mx-4 md:mx-8">
                     <table class="w-full bg-white text-sm text-left">
@@ -186,10 +277,12 @@
 
         </section>
 
+
+
         <!-- Footer -->
-        <footer class="py-10">
-            <div class="max-w-4xl mx-auto px-4">
-                <div class="bg-white/10 backdrop-blur rounded-2xl border-2 border-white/30 p-6">
+        <footer class="py-4">
+            <div class="mx-auto px-4">
+                <div class="bg-white/10 backdrop-blur rounded-2xl border-2 border-white/30 p-4">
                     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                         <div class="text-white font-bold text-2xl">Revo<span
                                 class="text-(--color-primary-amber)">Fun</span></div>

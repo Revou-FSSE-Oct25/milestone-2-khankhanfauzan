@@ -18,6 +18,18 @@ const gameOverMessage = document.getElementById("gameOverMessage");
 const resetBtn = document.getElementById("resetBtn");
 const previousGuessesList = document.getElementById("guessList");
 const previousGuessesContainer = document.getElementById("previousGuesses");
+const mobileWelcome = document.getElementById('mobileWelcomeMessage');
+const mobileWelcomeName = document.getElementById('mobileWelcomeName');
+
+const u = window.getCurrentUser && window.getCurrentUser();
+
+if (u) {
+    if (mobileWelcome && mobileWelcomeName) {
+        mobileWelcomeName.textContent = u;
+        mobileWelcome.classList.remove('hidden');
+    }
+}
+
 
 /**
  * Initialize a new game

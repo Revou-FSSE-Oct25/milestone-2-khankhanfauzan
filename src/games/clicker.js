@@ -9,6 +9,18 @@ const clickButton = document.getElementById("clickButton");
 const timerDisplay = document.getElementById("timerDisplay");
 const playAgainBtn = document.getElementById("playAgainBtn");
 
+const mobileWelcome = document.getElementById('mobileWelcomeMessage');
+const mobileWelcomeName = document.getElementById('mobileWelcomeName');
+
+const u = window.getCurrentUser && window.getCurrentUser();
+
+if (u) {
+    if (mobileWelcome && mobileWelcomeName) {
+        mobileWelcomeName.textContent = u;
+        mobileWelcome.classList.remove('hidden');
+    }
+}
+
 var defaultImg = "../../assets/images/cat.png";
 var openImg = "../../assets/images/cat-open.png";
 var countdownId = null;
