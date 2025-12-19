@@ -16,7 +16,6 @@ function closeUsernameModal() {
 
 function updateNavUI() {
   var btn = document.querySelector('a#navUserButton');
-  var logout = document.getElementById('logoutBtn');
   var welcomeHeading = document.getElementById('welcomeMessage');
   var mobileWelcome = document.getElementById('mobileWelcomeMessage');
   var mobileWelcomeName = document.getElementById('mobileWelcomeName');
@@ -24,7 +23,12 @@ function updateNavUI() {
   var mobilePlayBtn = document.getElementById('mobilePlayBtn');
   var u = window.getCurrentUser && window.getCurrentUser();
   if (u) {
-    if (btn) btn.classList.add('hidden');
+    if (btn) {
+      btn.setAttribute('href', '#');
+      btn.removeAttribute('onclick');
+      btn.onclick = function (e) { e.preventDefault(); logout(); };
+      btn.innerHTML = 'Logout';
+    }
     if (welcomeHeading) {
       welcomeHeading.textContent = 'Hello, ' + u;
       welcomeHeading.classList.remove('hidden');
@@ -35,15 +39,19 @@ function updateNavUI() {
     }
     if (mobilePlayBtn) mobilePlayBtn.classList.add('hidden');
     if (mobileLogoutBtn) mobileLogoutBtn.classList.remove('hidden');
-    if (logout) logout.classList.remove('hidden');
   } else {
+    if (btn) {
+      btn.setAttribute('href', '#games');
+      btn.removeAttribute('onclick');
+      btn.onclick = function (e) { checkCurrentUser(e); };
+      btn.innerHTML = 'Lets\n                                    Play!\n                                    <i class="ri-arrow-right-s-line"></i>';
+    }
     if (welcomeHeading) {
       welcomeHeading.classList.add('hidden');
     }
     if (mobileWelcome) mobileWelcome.classList.add('hidden');
     if (mobilePlayBtn) mobilePlayBtn.classList.remove('hidden');
     if (mobileLogoutBtn) mobileLogoutBtn.classList.add('hidden');
-    if (logout) logout.classList.add('hidden');
   }
 }
 
