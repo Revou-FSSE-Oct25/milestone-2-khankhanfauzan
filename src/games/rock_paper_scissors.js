@@ -7,6 +7,18 @@ const choices = Array.prototype.slice.call(document.querySelectorAll('.rps-choic
 const playAgainBtn = document.getElementById('playAgainBtn');
 const resultBox = document.getElementById('resultBox');
 
+const mobileWelcome = document.getElementById('mobileWelcomeMessage');
+const mobileWelcomeName = document.getElementById('mobileWelcomeName');
+
+const u = window.getCurrentUser && window.getCurrentUser();
+
+if (u) {
+    if (mobileWelcome && mobileWelcomeName) {
+        mobileWelcomeName.textContent = u;
+        mobileWelcome.classList.remove('hidden');
+    }
+}
+
 function getComputerChoice() {
     const randomIndex = Math.floor(Math.random() * options.length);
     return options[randomIndex];
