@@ -9,8 +9,8 @@ const clickButton = document.getElementById("clickButton");
 const timerDisplay = document.getElementById("timerDisplay");
 const playAgainBtn = document.getElementById("playAgainBtn");
 
-var defaultImg = "../../assets/images/cat.png";
-var openImg = "../../assets/images/cat-open.png";
+var defaultImg = "../assets/images/cat.png";
+var openImg = "../assets/images/cat-open.png";
 var countdownId = null;
 
 const audioSources = ['../assets/audios/pop1.ogg', '../assets/audios/pop2.ogg', '../assets/audios/pop3.ogg', '../assets/audios/pop4.ogg'];
