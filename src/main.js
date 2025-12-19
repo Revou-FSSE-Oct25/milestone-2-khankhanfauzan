@@ -96,18 +96,8 @@ function renderScoreboard(filterKey) {
     return;
   }
   filtered.forEach(function (u, idx) {
-    var tr = document.createElement("tr");
-    tr.className = "bg-neutral-primary border-b border-default";
-    var th = document.createElement("th");
-    th.scope = "row";
-    th.className = "px-6 py-4 font-medium text-heading whitespace-nowrap";
-    th.innerHTML = u.username + (idx === 0 ? ' <i class="ri-vip-crown-fill text-yellow-500 ml-2"></i>' : "");
-    var tdScore = document.createElement("td");
-    tdScore.className = "px-6 py-4";
-    tdScore.innerHTML = String(u.total || 0) + ' <i class="ri-meteor-fill text-amber-500"></i>';
-    tr.appendChild(th);
-    tr.appendChild(tdScore);
-    tbody.appendChild(tr);
+    var tr = window.renderScoreboardRow ? window.renderScoreboardRow(u.username, (u.total || 0), idx, ' <i class="ri-meteor-fill text-amber-500"></i>') : null;
+    if (tr) tbody.appendChild(tr);
   });
 }
 

@@ -81,4 +81,18 @@
     filtered.sort(function (a, b) { return b.score - a.score; });
     return filtered;
   };
+  window.renderScoreboardRow = function (username, score, idx, suffixHtml) {
+    var tr = document.createElement("tr");
+    tr.className = "bg-neutral-primary border-b border-default";
+    var th = document.createElement("th");
+    th.scope = "row";
+    th.className = "px-6 py-4 font-medium text-heading whitespace-nowrap";
+    th.innerHTML = String(username || "") + (idx === 0 ? ' <i class="ri-vip-crown-fill text-yellow-500 ml-2"></i>' : "");
+    var td = document.createElement("td");
+    td.className = "px-6 py-4";
+    td.innerHTML = String(Number(score || 0)) + (suffixHtml || "");
+    tr.appendChild(th);
+    tr.appendChild(td);
+    return tr;
+  };
 })(); 

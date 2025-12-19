@@ -278,18 +278,8 @@ function renderGameScoreboard() {
         return;
     }
     rows.forEach(function (u, idx) {
-        var tr = document.createElement("tr");
-        tr.className = "bg-neutral-primary border-b border-default";
-        var th = document.createElement("th");
-        th.scope = "row";
-        th.className = "px-6 py-4 font-medium text-heading whitespace-nowrap";
-        th.innerHTML = u.username + (idx === 0 ? ' <i class="ri-vip-crown-fill text-yellow-500 ml-2"></i>' : "");
-        var tdScore = document.createElement("td");
-        tdScore.className = "px-6 py-4";
-        tdScore.textContent = String(u.score || 0);
-        tr.appendChild(th);
-        tr.appendChild(tdScore);
-        tbody.appendChild(tr);
+        var tr = window.renderScoreboardRow ? window.renderScoreboardRow(u.username, (u.score || 0), idx, '') : null;
+        if (tr) tbody.appendChild(tr);
     });
 }
 renderGameScoreboard();

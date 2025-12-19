@@ -26,18 +26,17 @@ function getComputerChoice() {
 
 function determineWinner(playerChoice, computerChoice) {
     if (playerChoice.text === computerChoice.text) {
-
         return "It's a tie!";
     }
-
-    if (
-        (playerChoice.text === 'rock' && computerChoice.text === 'scissors') ||
-        (playerChoice.text === 'paper' && computerChoice.text === 'rock') ||
-        (playerChoice.text === 'scissors' && computerChoice.text === 'paper')
-    ) {
-        return "You win!";
-    } else {
-        return "Computer wins!";
+    switch (playerChoice.text) {
+        case 'rock':
+            return computerChoice.text === 'scissors' ? "You win!" : "Computer wins!";
+        case 'paper':
+            return computerChoice.text === 'rock' ? "You win!" : "Computer wins!";
+        case 'scissors':
+            return computerChoice.text === 'paper' ? "You win!" : "Computer wins!";
+        default:
+            return "Computer wins!";
     }
 }
 
@@ -86,7 +85,6 @@ function showStyledResult(result, playerChoice, computerChoice) {
 
 if (playAgainBtn) {
     playAgainBtn.addEventListener('click', function () {
-        message.textContent = "";
         if (resultBox) {
             resultBox.classList.add("hidden");
             resultBox.innerHTML = "";
@@ -111,18 +109,8 @@ function renderGameScoreboard() {
         return;
     }
     rows.forEach(function (u, idx) {
-        var tr = document.createElement("tr");
-        tr.className = "bg-neutral-primary border-b border-default";
-        var th = document.createElement("th");
-        th.scope = "row";
-        th.className = "px-6 py-4 font-medium text-heading whitespace-nowrap";
-        th.innerHTML = u.username + (idx === 0 ? ' <i class="ri-vip-crown-fill text-yellow-500 ml-2"></i>' : "");
-        var tdScore = document.createElement("td");
-        tdScore.className = "px-6 py-4";
-        tdScore.textContent = String(u.score || 0);
-        tr.appendChild(th);
-        tr.appendChild(tdScore);
-        tbody.appendChild(tr);
+        var tr = window.renderScoreboardRow ? window.renderScoreboardRow(u.username, (u.score || 0), idx, '') : null;
+        if (tr) tbody.appendChild(tr);
     });
 }
 renderGameScoreboard();
