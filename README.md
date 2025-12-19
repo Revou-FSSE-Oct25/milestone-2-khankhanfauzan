@@ -50,10 +50,6 @@ Repository Link: [Open](https://github.com/Revou-FSSE-Oct25/milestone-2-khankhan
     -   Go to `Settings` → `Pages` → `Source: Deploy from a branch`.
     -   Choose branch `main` and folder `/(root)`.
     -   Save and use the generated Pages URL.
--   Netlify
-    -   Create a new site connected to your GitHub repo or drag-and-drop the project folder.
-    -   No build command needed; set the publish directory to the project root.
-    -   Copy the site URL after deployment.
 
 ## Folder Structure
 
