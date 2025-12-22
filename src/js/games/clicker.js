@@ -1,17 +1,18 @@
-if (!window.getCurrentUser || !getCurrentUser()) {
+if (!window.getCurrentUser || !window.getCurrentUser()) {
     window.location.href = "../../index.html#games";
 }
 let score = 0;
 const timeLimit = 10;
+const TICK_MS = 1000;
 
 const scoreDisplay = document.getElementById("scoreDisplay");
 const clickButton = document.getElementById("clickButton");
 const timerDisplay = document.getElementById("timerDisplay");
 const playAgainBtn = document.getElementById("playAgainBtn");
 
-var defaultImg = "../assets/images/cat.png";
-var openImg = "../assets/images/cat-open.png";
-var countdownId = null;
+const defaultImg = "../assets/images/cat.png";
+const openImg = "../assets/images/cat-open.png";
+let countdownId = null;
 
 const audioSources = ['../assets/audios/pop1.ogg', '../assets/audios/pop2.ogg', '../assets/audios/pop3.ogg', '../assets/audios/pop4.ogg'];
 const rotateScores = ["-rotate-5", "rotate-5", "-rotate-10", "rotate-10", "rotate-15", "-rotate-15"];
@@ -54,8 +55,6 @@ function playRandomAudio() {
     const audio = new Audio(selectedSource);
 
     audio.play().then(() => {
-        // Optional: Log which sound was played
-        console.log(`Successfully played: ${selectedSource}`);
     })
         .catch(error => {
             // Handle any errors (e.g., browser restrictions on autoplay)
@@ -96,7 +95,7 @@ function startTimer(duration) {
             if (playAgainBtn) playAgainBtn.classList.remove("hidden");
             renderGameScoreboard();
         }
-    }, 1000);
+    }, TICK_MS);
 }
 
 window.onload = function () {
@@ -115,14 +114,14 @@ if (playAgainBtn) {
 }
 
 function renderGameScoreboard() {
-    var tbody = document.getElementById("gameScoreboardBody");
+    const tbody = document.getElementById("gameScoreboardBody");
     if (!tbody) return;
     tbody.innerHTML = "";
-    var rows = window.getScoreboardForGame ? window.getScoreboardForGame("clicker") : [];
+    const rows = window.getScoreboardForGame ? window.getScoreboardForGame("clicker") : [];
     if (!rows.length) {
-        var tr = document.createElement("tr");
+        const tr = document.createElement("tr");
         tr.className = "bg-neutral-primary";
-        var td = document.createElement("td");
+        const td = document.createElement("td");
         td.colSpan = 2;
         td.className = "px-6 py-4 text-center text-(--color-secondary-text)";
         td.textContent = "There are no scores for Clicker yet.";
@@ -131,7 +130,7 @@ function renderGameScoreboard() {
         return;
     }
     rows.forEach(function (u, idx) {
-        var tr = window.renderScoreboardRow ? window.renderScoreboardRow(u.username, (u.score || 0), idx, '') : null;
+        const tr = window.renderScoreboardRow ? window.renderScoreboardRow(u.username, (u.score || 0), idx, '') : null;
         if (tr) tbody.appendChild(tr);
     });
 }

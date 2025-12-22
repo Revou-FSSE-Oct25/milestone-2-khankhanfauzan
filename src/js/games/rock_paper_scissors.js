@@ -1,4 +1,4 @@
-if (!window.getCurrentUser || !getCurrentUser()) {
+if (!window.getCurrentUser || !window.getCurrentUser()) {
     window.location.href = "../../index.html#games";
 }
 const options = [{ text: 'rock', emoji: "🪨" }, { text: 'paper', emoji: "📄" }, { text: 'scissors', emoji: "✂️" }];
@@ -41,19 +41,21 @@ function determineWinner(playerChoice, computerChoice) {
 }
 
 function calculatePoints(result) {
-    var points = 0;
-    if (result === "You win!") points = 10;
-    else if (result === "It's a tie!") points = 5;
+    const WIN_POINTS = 10;
+    const TIE_POINTS = 5;
+    let points = 0;
+    if (result === "You win!") points = WIN_POINTS;
+    else if (result === "It's a tie!") points = TIE_POINTS;
     else points = 0;
     return points;
 }
 
 function handleChoiceClick(selectedText) {
-    var playerChoice = options.find(function (opt) { return opt.text === selectedText; });
-    var computerChoice = getComputerChoice();
-    var result = determineWinner(playerChoice, computerChoice);
+    const playerChoice = options.find(function (opt) { return opt.text === selectedText; });
+    const computerChoice = getComputerChoice();
+    const result = determineWinner(playerChoice, computerChoice);
     showStyledResult(result, playerChoice, computerChoice);
-    var points = calculatePoints(result);
+    const points = calculatePoints(result);
     if (window.saveScore) window.saveScore("rock_paper_scissors", points);
     renderGameScoreboard();
 }
@@ -68,7 +70,7 @@ choices.forEach(function (btn) {
 function showStyledResult(result, playerChoice, computerChoice) {
     if (!resultBox) return;
     resultBox.classList.remove("hidden", "bg-green-100", "text-green-800", "bg-red-100", "text-red-800", "bg-yellow-100", "text-yellow-800");
-    var html = "";
+    let html = "";
     if (result === "You win!") {
         resultBox.classList.add("bg-green-100", "text-green-800");
         html = `<h2 class="text-2xl font-bold mb-2">🏆 You Won!</h2><p>You ${playerChoice.emoji} beat ${computerChoice.emoji}. Great job!</p>`;
@@ -93,14 +95,14 @@ if (playAgainBtn) {
 }
 
 function renderGameScoreboard() {
-    var tbody = document.getElementById("gameScoreboardBody");
+    const tbody = document.getElementById("gameScoreboardBody");
     if (!tbody) return;
     tbody.innerHTML = "";
-    var rows = window.getScoreboardForGame ? window.getScoreboardForGame("rock_paper_scissors") : [];
+    const rows = window.getScoreboardForGame ? window.getScoreboardForGame("rock_paper_scissors") : [];
     if (!rows.length) {
-        var tr = document.createElement("tr");
+        const tr = document.createElement("tr");
         tr.className = "bg-neutral-primary";
-        var td = document.createElement("td");
+        const td = document.createElement("td");
         td.colSpan = 2;
         td.className = "px-6 py-4 text-center text-(--color-secondary-text)";
         td.textContent = "There are no scores for Rock Paper Scissors yet.";
@@ -109,7 +111,7 @@ function renderGameScoreboard() {
         return;
     }
     rows.forEach(function (u, idx) {
-        var tr = window.renderScoreboardRow ? window.renderScoreboardRow(u.username, (u.score || 0), idx, '') : null;
+        const tr = window.renderScoreboardRow ? window.renderScoreboardRow(u.username, (u.score || 0), idx, '') : null;
         if (tr) tbody.appendChild(tr);
     });
 }

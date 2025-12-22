@@ -37,8 +37,7 @@
                             </div>
                             <div class="flex items-center">
                                 <a id="navUserButton" href="#games"
-                                    class="hidden md:inline-flex bg-(--color-primary-amber) text-white px-4 py-2 rounded-full text-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) transition duration-300"
-                                    onclick="checkCurrentUser(event)">Lets
+                                    class="hidden md:inline-flex bg-(--color-primary-amber) text-white px-4 py-2 rounded-full text-xl font-semibold hover:bg-white hover:text-(--color-secondary-text) transition duration-300">Lets
                                     Play!
                                     <i class="ri-arrow-right-s-line"></i></a>
 
@@ -209,7 +208,7 @@
                     <h3 class="text-2xl font-semibold my-4">Number Guessing</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At magnam atque alias ipsam aut maiores
                         minus cupiditate vero mollitia nobis!</p>
-                    <button onclick="startGame('./games/number_guessing.html')"
+                    <button data-game="./games/number_guessing.html"
                         class="mt-4 bg-white text-(--color-purple-pastel) font-semibold px-4 py-2 rounded-full hover:bg-(--color-secondary-pink) hover:text-white transition duration-300 ">Play
                         Now</button>
                 </div>
@@ -223,8 +222,8 @@
                     <h3 class="text-2xl font-semibold my-4">Clicker Game</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At magnam atque alias ipsam aut maiores
                         minus cupiditate vero mollitia nobis!</p>
-                    <button onclick="startGame('./games/clicker.html')"
-                        class="mt-4 bg-white text-(--color-accent-mint) font-semibold px-4 py-2 rounded-full hover:bg-(--color-accent-mint) hover:text-white transition duration-300 ">Play
+                    <button data-game="./games/clicker.html"
+                        class="mt-4 bg-white text-(--color-purple-pastel) font-semibold px-4 py-2 rounded-full hover:bg-(--color-secondary-pink) hover:text-white transition duration-300 ">Play
                         Now</button>
                 </div>
                 <!-- Clicker Game -->
@@ -237,7 +236,7 @@
                     <h3 class="text-2xl font-semibold my-4">Rock, Paper, Scissors</h3>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At magnam atque alias ipsam aut maiores
                         minus cupiditate vero mollitia nobis!</p>
-                    <button onclick="startGame('./games/rock_paper_scissors.html')"
+                    <button data-game="./games/rock_paper_scissors.html"
                         class="mt-4 bg-white text-(--color-primary-blue) font-semibold px-4 py-2 rounded-full hover:bg-(--color-primary-blue) hover:text-white transition duration-300 ">Play
                         Now</button>
                 </div>
@@ -322,8 +321,8 @@
         </div>
     </div>
 
-    <script src="src/storage.js"></script>
-    <script src="src/main.js"></script>
+    <script src="src/js/storage.js"></script>
+    <script src="src/js/main.js"></script>
 </body>
 
 </html>

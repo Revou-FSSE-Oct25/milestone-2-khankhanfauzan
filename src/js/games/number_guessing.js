@@ -1,4 +1,4 @@
-if (!window.getCurrentUser || !getCurrentUser()) {
+if (!window.getCurrentUser || !window.getCurrentUser()) {
     window.location.href = "../../index.html#games";
 }
 // Game state variables
@@ -6,6 +6,11 @@ let targetNumber;
 let attemptsLeft;
 let gameActive;
 let previousGuesses;
+
+// Config constants
+const MAX_NUMBER = 100;
+const MAX_ATTEMPTS = 10;
+const POINTS_PER_ATTEMPT = 10;
 
 // DOM elements
 const guessInput = document.getElementById("guessInput");
@@ -30,15 +35,14 @@ if (u) {
     }
 }
 
-
 /**
  * Initialize a new game
  * Sets up all game variables and resets the UI
  */
 function initGame() {
-    // Generate random number between 1 and 100
-    targetNumber = Math.floor(Math.random() * 100) + 1;
-    attemptsLeft = 10;
+    // Generate random number between 1 and MAX_NUMBER
+    targetNumber = Math.floor(Math.random() * MAX_NUMBER) + 1;
+    attemptsLeft = MAX_ATTEMPTS;
     gameActive = true;
     previousGuesses = [];
 
@@ -60,8 +64,6 @@ function initGame() {
 
     // Focus on input for better UX
     guessInput.focus();
-
-    console.log("New game started! Target number:", targetNumber); // For debugging (remove in production)
 }
 
 /**
@@ -81,12 +83,12 @@ function validateInput(input) {
     // Check if it's a valid integer
     const num = Number(input);
     if (isNaN(num) || !Number.isInteger(num) || num < 1) {
-        return { isValid: false, message: "Please enter a valid number between 1 and 100!" };
+        return { isValid: false, message: `Please enter a valid number between 1 and ${MAX_NUMBER}!` };
     }
 
-    // Check range (1-100)
-    if (num < 1 || num > 100) {
-        return { isValid: false, message: "Please enter a number between 1 and 100!" };
+    // Check range (1-MAX_NUMBER)
+    if (num < 1 || num > MAX_NUMBER) {
+        return { isValid: false, message: `Please enter a number between 1 and ${MAX_NUMBER}!` };
     }
 
     // Check for duplicate guesses
@@ -206,8 +208,8 @@ function endGame(won) {
 
     // Set appropriate game over message
     if (won) {
-        const attempts = 10 - attemptsLeft;
-        const points = attemptsLeft * 10;
+        const attempts = MAX_ATTEMPTS - attemptsLeft;
+        const points = attemptsLeft * POINTS_PER_ATTEMPT;
         if (window.saveScore) window.saveScore("number_guessing", points);
         gameOverMessage.innerHTML = `
             <h2 class="text-2xl font-bold text-green-600 mb-2">🏆 You Won!</h2>
@@ -243,14 +245,11 @@ function handleSubmit() {
 }
 
 // Event listeners
-// YOUR CODE HERE
-
 submitBtn.addEventListener("click", handleSubmit);
 guessInput.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
         event.preventDefault();
         handleSubmit();
-        console.log("Submit")
     }
 
 })
@@ -262,14 +261,14 @@ resetBtn.addEventListener("click", initGame);
 initGame();
 
 function renderGameScoreboard() {
-    var tbody = document.getElementById("gameScoreboardBody");
+    const tbody = document.getElementById("gameScoreboardBody");
     if (!tbody) return;
     tbody.innerHTML = "";
-    var rows = window.getScoreboardForGame ? window.getScoreboardForGame("number_guessing") : [];
+    const rows = window.getScoreboardForGame ? window.getScoreboardForGame("number_guessing") : [];
     if (!rows.length) {
-        var tr = document.createElement("tr");
+        const tr = document.createElement("tr");
         tr.className = "bg-neutral-primary";
-        var td = document.createElement("td");
+        const td = document.createElement("td");
         td.colSpan = 2;
         td.className = "px-6 py-4 text-center text-(--color-secondary-text)";
         td.textContent = "There are no scores for Number Guessing yet.";
@@ -278,7 +277,7 @@ function renderGameScoreboard() {
         return;
     }
     rows.forEach(function (u, idx) {
-        var tr = window.renderScoreboardRow ? window.renderScoreboardRow(u.username, (u.score || 0), idx, '') : null;
+        const tr = window.renderScoreboardRow ? window.renderScoreboardRow(u.username, (u.score || 0), idx, '') : null;
         if (tr) tbody.appendChild(tr);
     });
 }
